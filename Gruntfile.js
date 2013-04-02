@@ -77,6 +77,21 @@ module.exports = function(grunt) {
         files: {
           'tmp/customproperty' : 'test/fixtures/customproperty'
         }
+      },
+      post_processing: {
+        options: {
+          postProcessContent: function(i) {
+            var remove = function(s, regex) {
+              return s.replace(regex, '');
+            };
+            //Remove RM commented lines
+            var rmFlags = /\/\*RM\*\/[^\n]*\n/g;
+            return remove(i, rmFlags);
+          }
+        },
+        files: {
+          'tmp/postprocessing' : 'test/fixtures/postprocessing'
+        }
       }
     },
 

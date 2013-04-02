@@ -29,10 +29,14 @@ module.exports = function(grunt) {
     }
 
     var processJs = function(i) {
-      return i.replace(/\$\{([A-Za-z0-9\.]*)\}/g, function(match) {
+      var processed = i.replace(/\$\{([A-Za-z0-9\.]*)\}/g, function(match) {
         var key = match.substring(2, match.length - 1);
         return props.get(key);
       });
+      if (!options.postProcessContent) {
+        return processed;
+      }
+      return options.postProcessContent(processed);
     };
 
     grunt.verbose.writeflags(options, 'Options');

@@ -72,5 +72,14 @@ exports.java_properties = {
     test.equal(actual, expected, 'Files are different');
 
     test.done();
+  },
+  post_processing: function(test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/postprocessing');
+    var expected = grunt.file.read('test/expected/postprocessing');
+    test.equal(actual, expected, 'Files are different');
+
+    test.done();
   }
 };
