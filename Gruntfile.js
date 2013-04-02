@@ -32,20 +32,52 @@ module.exports = function(grunt) {
     java_properties: {
       default_options: {
         options: {
+          properties: ['test/fixtures/singleproperty.properties']
         },
         files: {
-          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123'],
+          'tmp/noproperties' : 'test/fixtures/noproperties'
         },
       },
-      custom_options: {
+      single_property: {
         options: {
-          separator: ': ',
-          punctuation: ' !!!',
+          properties: ['test/fixtures/singleproperty.properties']
         },
         files: {
-          'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123'],
-        },
+          'tmp/singleproperty' : 'test/fixtures/singleproperty'
+        }
       },
+      multiple_files: {
+        options: {
+          properties: ['test/fixtures/singleproperty.properties']
+        },
+        files: [{
+          expand: true,
+          cwd: 'test/fixtures/',
+          src: ['noproperties', 'singleproperty'],
+          dest: 'tmp/multiple_files/'
+        }]
+      },
+      multiple_properties: {
+        options: {
+          properties: [
+            'test/fixtures/singleproperty.properties',
+            'test/fixtures/secondproperty.properties'
+          ],
+        },
+        files: {
+          'tmp/multipleproperties' : 'test/fixtures/multipleproperties'
+        }
+      },
+      custom_property: {
+        options: {
+          processProperties: function(props) {
+            props.set('custom.property', 'Hello');
+          }
+        },
+        files: {
+          'tmp/customproperty' : 'test/fixtures/customproperty'
+        }
+      }
     },
 
     // Unit tests.
