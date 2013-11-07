@@ -28,7 +28,7 @@ module.exports = function(grunt) {
       options.processProperties(props);
     }
 
-    var processJs = function(i) {
+    var processJs = function(i, path) {
       var processed = i.replace(/\$\{([A-Za-z0-9\.]*)\}/g, function(match) {
         var key = match.substring(2, match.length - 1);
         return props.get(key);
@@ -36,7 +36,7 @@ module.exports = function(grunt) {
       if (!options.postProcessContent) {
         return processed;
       }
-      return options.postProcessContent(processed);
+      return options.postProcessContent(processed, path);
     };
 
     grunt.verbose.writeflags(options, 'Options');
