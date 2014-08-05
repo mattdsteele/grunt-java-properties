@@ -1,7 +1,7 @@
 {
   "name": "grunt-java-properties",
   "description": "Copies files while performing string interpolation from Java properties files",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/mattdsteele/grunt-java-properties",
   "author": {
     "name": "Matt Steele",
@@ -28,7 +28,7 @@
     "test": "grunt test"
   },
   "dependencies" : {
-    "java-properties": "~0.1.0"
+    "java-properties": "~0.1.5"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.1.1",
