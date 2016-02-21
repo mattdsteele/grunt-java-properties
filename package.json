@@ -27,7 +27,7 @@
   "scripts": {
     "test": "grunt test"
   },
-  "dependencies" : {
+  "dependencies": {
     "java-properties": "~0.1.5"
   },
   "devDependencies": {
@@ -37,7 +37,7 @@
     "grunt": "~0.4.0"
   },
   "peerDependencies": {
-    "grunt": "~0.4.0"
+    "grunt": ">=0.4.0"
   },
   "keywords": [
     "gruntplugin"
